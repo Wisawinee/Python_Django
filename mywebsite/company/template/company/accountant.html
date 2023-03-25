@@ -1,0 +1,46 @@
+{% extends 'company/base.html' %}
+
+{% block title %} เกี่ยวกับเรา {% endblock title %}
+
+{% block content %}
+
+<center>
+        <h1>ฝ่ายบัญชี</h1>
+        
+        <p style="color:blue;">
+            หน้านี้แสดงรายชื่อผู้ติดต่อทั้งหมดให้ฝ่ายบัญชีช่วยติดต่อกลับ
+        </p>
+</center>
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ลำดับ</th>
+        <th scope="col">หัวข้อ</th>
+        <th scope="col">อีเมล</th>
+        <th scope="col">รายละเอียด</th>
+        <th scope="col">จัดการแล้ว</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for ct in contact %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{ct.title}}</td>
+        <td>{{ct.email}}</td>
+        <td>{{ct.detail}}</td>
+
+        {% if ct.complete == True %}
+              <td><i class="fa fa-check" style="font-size:32px;color:green;"></i></td>
+        {% else %}
+              <td><i class="fa fa-times" style="font-size:32px;color:red;"></i></td>
+        {% endif %}
+
+      </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock content %}

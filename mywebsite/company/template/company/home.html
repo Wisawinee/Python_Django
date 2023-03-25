@@ -1,0 +1,96 @@
+{% extends 'company/base.html' %}
+{% load static %}
+
+{% block title %} Welcome to Wiz {% endblock title %}
+
+{% block content %}
+
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+
+    {% if user.profile.usertype == 'vip' %}
+    <h1 class="display-4 fw-normal">โปรโมชั่นพิเศษ VIP Member เท่านั้น!</h1>
+    <p class="fs-5 text-muted">ตอนนี้ iphone มาใหม่ หากซื้อวันนี้จะได้รับส่วนลดทันที 50%</p>
+
+    {% elif user.profile.usertype == 'vvip' %}
+    <h1 class="display-4 fw-normal">โปรโมชั่นพิเศษ VVIP Member เท่านั้น!</h1>
+    <p class="fs-5 text-muted">ตอนนี้ iphone มาใหม่ หากซื้อวันนี้จะได้รับส่วนลดทันที 70%</p>
+
+    {% elif user.profile.usertype == 'member' %}
+    <h1 class="display-4 fw-normal">โปรโมชั่นพิเศษ Member เท่านั้น!</h1>
+    <p class="fs-5 text-muted">ตอนนี้ iphone มาใหม่ หากซื้อวันนี้จะได้รับส่วนลดทันที 30%</p>
+
+    {% else %}
+    <h1 class="display-4 fw-normal">โปรโมชั่นพิเศษ</h1>
+    <p class="fs-5 text-muted">ตอนนี้ iphone มาใหม่ หากซื้อวันนี้จะได้รับส่วนลดทันที 20%</p>
+    {% endif %}
+
+  </div>
+
+  <img src="{% static 'image/iphone13.png' %}" alt="My image">
+
+    <center>
+        {% for pd in allproduct %}
+              <h3>{{pd.title}}</h3>
+              <p>
+                รายละเอียด: {{pd.description}}<br>
+                ราคา: {{pd.price}} บาท<br>
+                เหลือในสต๊อก: {{pd.quantity}} เครื่อง<br>
+              </p>
+              <hr>
+        {% endfor %}
+    </center>
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">iPhone 13 Pro Max</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">9,900<small class="text-muted fw-light">บาท</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>10 users included</li>
+              <li>2 GB of storage</li>
+              <li>Email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">สั่งซื้อ</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">iPhone 13 Pro</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">8,000<small class="text-muted fw-light">บาท</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>20 users included</li>
+              <li>10 GB of storage</li>
+              <li>Priority email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">สั่งซื้อ</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 text-white bg-primary border-primary">
+            <h4 class="my-0 fw-normal">iPhone 13</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">7,500<small class="text-muted fw-light">บาท</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>30 users included</li>
+              <li>15 GB of storage</li>
+              <li>Phone and email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="w-100 btn btn-lg btn-primary">สั่งซื้อ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
